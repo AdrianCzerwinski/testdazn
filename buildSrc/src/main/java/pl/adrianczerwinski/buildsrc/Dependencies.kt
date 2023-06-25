@@ -19,6 +19,7 @@ object Versions {
     const val gson = "2.8.9"
     const val accompanist = "0.30.1"
     const val retrofit = "2.9.0"
+    const val coil = "2.4.0"
 }
 
 object Dependencies {
@@ -32,12 +33,15 @@ object Dependencies {
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
         const val uiGraphics = "androidx.compose.ui:ui-graphics:${Versions.compose}"
         const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
+        const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
         const val uiTestJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
         const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
         const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
         const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.composeLifecycle}"
+        const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeLifecycle}"
         const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
         const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist}"
+        const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
     }
 
     object Test {

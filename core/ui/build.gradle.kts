@@ -39,5 +39,6 @@ dependencies {
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.uiGraphics)
     implementation(Dependencies.Compose.uiToolingPreview)
+    implementation(Dependencies.Compose.uiTooling)
     implementation(Dependencies.Compose.material3)
 }

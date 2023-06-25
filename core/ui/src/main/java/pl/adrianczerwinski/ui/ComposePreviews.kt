@@ -23,7 +23,7 @@ fun ColumnPreview(
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     content: @Composable ColumnScope.() -> Unit
 ) = TestDaznTheme(dynamicColor = false, darkTheme = isSystemInDarkTheme()) {
-    Column(modifier.padding(24.dp), verticalArrangement, horizontalAlignment) { content() }
+    Column(modifier.background(MaterialTheme.colorScheme.background).padding(24.dp), verticalArrangement, horizontalAlignment) { content() }
 }
 
 @Composable

@@ -2,12 +2,11 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
-    id("kotlin-parcelize")
     kotlin("kapt")
 }
 
 android {
-    namespace = "pl.adrianczerwinski.testdazn.data.events"
+    namespace = "pl.adrianczerwinski.testdazn.domain.events"
 
     composeOptions {
         kotlinCompilerExtensionVersion = AppData.kotlinCompilerExtensionVersion
@@ -33,16 +32,15 @@ android {
 }
 
 dependencies {
+    implementation(project(":data:events"))
     implementation(project(":core:common"))
+
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.lifecycleRuntimeKtx)
 
     implementation(Dependencies.DI.hilt)
     kapt(Dependencies.DI.hiltCompiler)
     kapt(Dependencies.DI.hiltCoreCompiler)
-
-    implementation(Dependencies.Retrofit.converterGson)
-    implementation(Dependencies.Retrofit.core)
 
     implementation(Dependencies.Compose.runtime)
 }

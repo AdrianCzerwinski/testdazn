@@ -16,10 +16,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 import pl.adrianczerwinski.testdazn.navigation.Destinations
 import pl.adrianczerwinski.testdazn.navigation.TestDaznNav
 import pl.adrianczerwinski.ui.theme.TestDaznTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val navOptions = navOptions {

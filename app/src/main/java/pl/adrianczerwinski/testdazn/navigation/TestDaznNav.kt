@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import pl.adrianczerwinski.events.Events
 
 @Composable
 internal fun TestDaznNav(navHostController: NavHostController, modifier: Modifier = Modifier) {
@@ -18,9 +19,7 @@ internal fun TestDaznNav(navHostController: NavHostController, modifier: Modifie
         startDestination = Destinations.BottomNav.EVENTS
     ) {
         composable(Destinations.BottomNav.EVENTS) {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = "Events")
-            }
+            Events()
         }
         composable(Destinations.BottomNav.SCHEDULE) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -29,7 +28,7 @@ internal fun TestDaznNav(navHostController: NavHostController, modifier: Modifie
         }
         composable(Destinations.BottomNav.VIDEO_PLAYER) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(text = "Schedule")
+                Text(text = "Video player")
             }
         }
     }
