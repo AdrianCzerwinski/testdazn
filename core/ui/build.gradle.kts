@@ -40,5 +40,4 @@ dependencies {
     implementation(Dependencies.Compose.uiGraphics)
     implementation(Dependencies.Compose.uiToolingPreview)
     implementation(Dependencies.Compose.material3)
-    implementation(Dependencies.Google.fonts)
 }

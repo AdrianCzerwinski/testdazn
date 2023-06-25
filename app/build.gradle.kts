@@ -38,6 +38,7 @@ dependencies {
     implementation(Dependencies.Compose.runtime)
     implementation(Dependencies.Compose.systemUiController)
     implementation(Dependencies.Compose.navigation)
+    implementation(Dependencies.Compose.navigationAnimation)
 
     implementation(Dependencies.DI.hilt)
 
