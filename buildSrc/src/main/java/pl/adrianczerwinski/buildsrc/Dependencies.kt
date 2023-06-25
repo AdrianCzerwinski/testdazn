@@ -1,7 +1,5 @@
 object Versions {
     const val activityCompose = "1.7.1"
-    const val androidxTestExtJunit = "1.1.3"
-    const val bom = "2023.04.01"
     const val compose = "1.4.3"
     const val composeNavigation = "2.5.3"
     const val coreKtx = "1.10.1"
@@ -32,14 +30,11 @@ object Dependencies {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
 
     object Compose {
-        const val bom = "androidx.compose:compose-bom:${Versions.bom}"
         const val material3 = "androidx.compose.material3:material3:${Versions.material3}"
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
         const val uiGraphics = "androidx.compose.ui:ui-graphics:${Versions.compose}"
         const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
         const val uiTestJUnit4 = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
-        const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-        const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
         const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
         const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
         const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-compose:${Versions.composeLifecycle}"
@@ -53,11 +48,6 @@ object Dependencies {
         const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
         const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
         const val truth = "com.google.truth:truth:${Versions.truth}"
-
-        object AndroidXTest {
-            const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
-            const val extJunit = "androidx.test.ext:junit:${Versions.androidxTestExtJunit}"
-        }
     }
 
     object CleanCode {

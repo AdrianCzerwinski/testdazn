@@ -25,11 +25,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.lifecycleRuntimeKtx)
     implementation(Dependencies.activityCompose)
 
-    implementation(platform(Dependencies.Compose.bom))
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.uiGraphics)
     implementation(Dependencies.Compose.uiToolingPreview)

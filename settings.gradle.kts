@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "TestDazn"
 include(":app")
+include(":core:ui")
+include(":core:ui")
