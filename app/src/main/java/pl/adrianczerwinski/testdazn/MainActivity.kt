@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
             val systemUiController = rememberSystemUiController()
             val useDarkIcons = !isSystemInDarkTheme()
             TestDaznTheme(
-                dynamicColor = true
+                dynamicColor = false
             ) {
                 val backgroundColor = MaterialTheme.colorScheme.background
                 val navController = rememberNavController()

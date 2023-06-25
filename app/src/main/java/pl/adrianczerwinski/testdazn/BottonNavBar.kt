@@ -51,7 +51,7 @@ private fun RowScope.EventsBottomNavItem(currentRoute: String, onEventsClick: ()
     verticalArrangement = Arrangement.Center
 ) {
     val contentColor = if (currentRoute == Destinations.BottomNav.EVENTS) {
-        MaterialTheme.colorScheme.secondary
+        MaterialTheme.colorScheme.primary
     } else {
         MaterialTheme.colorScheme.tertiary
     }
@@ -72,8 +72,8 @@ private fun RowScope.ScheduleBottomNavItem(currentRoute: String, onScheduleClick
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
 ) {
-    val contentColor = if (currentRoute == Destinations.BottomNav.EVENTS) {
-        MaterialTheme.colorScheme.secondary
+    val contentColor = if (currentRoute == Destinations.BottomNav.SCHEDULE) {
+        MaterialTheme.colorScheme.primary
     } else {
         MaterialTheme.colorScheme.tertiary
     }
