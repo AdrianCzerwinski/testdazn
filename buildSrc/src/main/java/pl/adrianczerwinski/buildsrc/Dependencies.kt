@@ -4,12 +4,10 @@ object Versions {
     const val composeNavigation = "2.5.3"
     const val coreKtx = "1.10.1"
     const val detekt = "1.22.0"
-    const val espressoCore = "3.5.1"
     const val junit = "4.13.2"
     const val ktlint = "11.1.0"
     const val lifecycleRuntimeKtx = "2.6.1"
     const val material3 = "1.1.0"
-    const val datastore = "1.0.0"
     const val hilt = "2.46.1"
     const val hiltCore = "1.0.0"
     const val mockk = "1.12.0"
@@ -18,8 +16,9 @@ object Versions {
     const val truth = "1.1.3"
     const val composeLifecycle = "2.6.1"
     const val room = "2.5.1"
-    const val gson = "2.8.7"
+    const val gson = "2.8.9"
     const val accompanist = "0.30.1"
+    const val retrofit = "2.9.0"
 }
 
 object Dependencies {
@@ -60,6 +59,11 @@ object Dependencies {
         const val hiltCoreCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltCore}"
         const val hiltComposeNavigation = "androidx.hilt:hilt-navigation-compose:${Versions.hiltCore}"
         const val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
+    }
+
+    object Retrofit {
+        const val core = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     }
 }
 

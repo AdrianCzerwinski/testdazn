@@ -1,6 +1,5 @@
 package pl.adrianczerwinski.testdazn.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -11,7 +10,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 internal fun TestDaznNav(navHostController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(
