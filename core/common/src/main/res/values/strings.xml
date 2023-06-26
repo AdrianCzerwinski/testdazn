@@ -2,4 +2,5 @@
 <resources>
     <string name="today">Today, %1$s</string>
     <string name="yesterday">Yesterday, %1$s</string>
+    <string name="tomorrow">Tomorrow, %1$s</string>
 </resources>

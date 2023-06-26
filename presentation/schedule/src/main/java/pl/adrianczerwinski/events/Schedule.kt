@@ -43,21 +43,18 @@ fun Schedule(
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
-    ScheduleScreen(uiState = uiState, onRetryPressed = { viewModel.getScheduledEvents() }) {
-        // TODO add navigation do media player
-    }
+    ScheduleScreen(uiState = uiState, onRetryPressed = { viewModel.getScheduledEvents() })
 }
 
 @Composable
 private fun ScheduleScreen(
     uiState: ScheduledEventsUiState,
-    onRetryPressed: () -> Unit = {},
-    onEventClick: (Int) -> Unit
+    onRetryPressed: () -> Unit = {}
 ) = Column(
     modifier = Modifier.fillMaxSize()
 ) {
     when (uiState.screenState) {
-        SUCCESS -> EventsList(uiState.scheduledEvents) { onEventClick(it) }
+        SUCCESS -> EventsList(uiState.scheduledEvents)
 
         LOADING -> Column(
             modifier = Modifier.fillMaxSize(),

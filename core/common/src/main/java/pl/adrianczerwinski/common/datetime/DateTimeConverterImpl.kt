@@ -12,15 +12,16 @@ class DateTimeConverterImpl @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : DateTimeConverter {
     override fun toEpochMilliseconds(input: String): Long {
-        val sdf = SimpleDateFormat(SERVER_TIME_PATTERN, Locale.getDefault())
-        sdf.timeZone = TimeZone.getTimeZone(DEFAULT_ZONE)
-        val date = sdf.parse(input)
+        val format = SimpleDateFormat(SERVER_TIME_PATTERN, Locale.getDefault())
+        format.timeZone = TimeZone.getTimeZone(DEFAULT_ZONE)
+        val date = format.parse(input)
         return date?.time ?: 0
     }
 
     override fun formatEpochToLocalDateString(epochMillis: Long): String {
         val today = Calendar.getInstance().apply { set(Calendar.HOUR_OF_DAY, 0) }
         val yesterday = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, -1); set(Calendar.HOUR_OF_DAY, 0) }
+        val tomorrow = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, +1); set(Calendar.HOUR_OF_DAY, 0) }
         val inputDate = Calendar.getInstance().apply { timeInMillis = epochMillis }
 
         val timeFormat = SimpleDateFormat(APP_TIME_FORMAT, Locale.getDefault())
@@ -28,8 +29,18 @@ class DateTimeConverterImpl @Inject constructor(
         val time = timeFormat.format(inputDate.time)
 
         return when {
-            inputDate >= today -> resourceProvider.getString(R.string.today, time)
-            inputDate >= yesterday -> resourceProvider.getString(R.string.yesterday, time)
+            inputDate.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR) -> resourceProvider.getString(R.string.today, time)
+
+            inputDate.get(Calendar.DAY_OF_YEAR) == yesterday.get(Calendar.DAY_OF_YEAR) -> resourceProvider.getString(
+                R.string.yesterday,
+                time
+            )
+
+            inputDate.get(Calendar.DAY_OF_YEAR) == tomorrow.get(Calendar.DAY_OF_YEAR) -> resourceProvider.getString(
+                R.string.tomorrow,
+                time
+            )
+
             else -> dateFormat.format(inputDate.time)
         }
     }
