@@ -11,16 +11,16 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import pl.adrianczerwinski.events.EventsUiAction.OpenVideoPlayer
+import pl.adrianczerwinski.events.EventsUiState.ScreenState.CONTENT
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.ERROR
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.LOADING
-import pl.adrianczerwinski.events.EventsUiState.ScreenState.SUCCESS
 import javax.inject.Inject
 
 data class EventsUiState(
     val events: List<EventUiModel> = listOf(),
     val screenState: ScreenState = LOADING
 ) {
-    enum class ScreenState { SUCCESS, LOADING, ERROR }
+    enum class ScreenState { CONTENT, LOADING, ERROR }
 }
 
 sealed class EventsUiAction {
@@ -52,7 +52,7 @@ class EventsViewModel @Inject constructor(
                 .getOrThrow()
                 .map { mapper.toUiModel(it) }
                 .sortedBy { it.date }
-            _state.value.copy(events = newEvents, screenState = SUCCESS)
+            _state.value.copy(events = newEvents, screenState = CONTENT)
         } else {
             _state.value.copy(screenState = ERROR)
         }

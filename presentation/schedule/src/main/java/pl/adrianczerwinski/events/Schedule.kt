@@ -27,13 +27,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImagePainter.State.Success
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import pl.adrianczerwinski.common.OnLifecycleEvent
+import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.CONTENT
 import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.ERROR
 import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.LOADING
-import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.SUCCESS
 import pl.adrianczerwinski.ui.components.CommonError
 import pl.adrianczerwinski.ui.components.GradientOverlay
 
@@ -42,6 +44,10 @@ fun Schedule(
     viewModel: ScheduledEventsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
+
+    OnLifecycleEvent { _, event ->
+        if (event == Lifecycle.Event.ON_STOP) viewModel.onStop()
+    }
 
     ScheduleScreen(uiState = uiState, onRetryPressed = { viewModel.getScheduledEvents() })
 }
@@ -54,7 +60,7 @@ private fun ScheduleScreen(
     modifier = Modifier.fillMaxSize()
 ) {
     when (uiState.screenState) {
-        SUCCESS -> EventsList(uiState.scheduledEvents)
+        CONTENT -> EventsList(uiState.scheduledEvents)
 
         LOADING -> Column(
             modifier = Modifier.fillMaxSize(),

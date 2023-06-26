@@ -32,9 +32,9 @@ import coil.compose.AsyncImagePainter.State.Success
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import pl.adrianczerwinski.common.HandleAction
+import pl.adrianczerwinski.events.EventsUiState.ScreenState.CONTENT
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.ERROR
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.LOADING
-import pl.adrianczerwinski.events.EventsUiState.ScreenState.SUCCESS
 import pl.adrianczerwinski.ui.components.CommonError
 import pl.adrianczerwinski.ui.components.GradientOverlay
 
@@ -65,7 +65,7 @@ private fun EventsScreen(
     modifier = Modifier.fillMaxSize()
 ) {
     when (uiState.screenState) {
-        SUCCESS -> EventsList(uiState.events) { onEventClick(it) }
+        CONTENT -> EventsList(uiState.events) { onEventClick(it) }
 
         LOADING -> Column(
             modifier = Modifier.fillMaxSize(),
