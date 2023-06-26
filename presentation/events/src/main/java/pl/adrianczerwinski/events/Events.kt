@@ -31,6 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImagePainter.State.Success
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import pl.adrianczerwinski.common.HandleAction
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.ERROR
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.LOADING
 import pl.adrianczerwinski.events.EventsUiState.ScreenState.SUCCESS
@@ -45,7 +46,13 @@ fun Events(
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
     EventsScreen(uiState = uiState, onRetryPressed = { viewModel.getEvents() }) { url ->
-        onNavigateToPlayer(url)
+        viewModel.openVideoPlayer(url)
+    }
+
+    HandleAction(viewModel.actions) { action ->
+        when (action) {
+            is EventsUiAction.OpenVideoPlayer -> onNavigateToPlayer(action.url)
+        }
     }
 }
 
