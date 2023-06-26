@@ -43,6 +43,8 @@ dependencies {
     implementation(Dependencies.Compose.viewModel)
     implementation(Dependencies.Compose.coil)
 
+    implementation(Dependencies.Compose.systemUiController)
+
     implementation(Dependencies.exoplayer)
 
     implementation(Dependencies.DI.hiltComposeNavigation)

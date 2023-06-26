@@ -39,12 +39,13 @@ import pl.adrianczerwinski.ui.components.GradientOverlay
 
 @Composable
 fun Events(
-    viewModel: EventsViewModel = hiltViewModel()
+    viewModel: EventsViewModel = hiltViewModel(),
+    onNavigateToPlayer: (String) -> Unit
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
-    EventsScreen(uiState = uiState, onRetryPressed = { viewModel.getEvents() }) {
-        // TODO add navigation do media player
+    EventsScreen(uiState = uiState, onRetryPressed = { viewModel.getEvents() }) { url ->
+        onNavigateToPlayer(url)
     }
 }
 
@@ -52,7 +53,7 @@ fun Events(
 private fun EventsScreen(
     uiState: EventsUiState,
     onRetryPressed: () -> Unit = {},
-    onEventClick: (Int) -> Unit
+    onEventClick: (String) -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize()
 ) {
@@ -80,14 +81,14 @@ private fun EventsScreen(
 @Composable
 private fun EventsList(
     eventsList: List<EventUiModel>,
-    onEventClick: (Int) -> Unit = {}
+    onEventClick: (String) -> Unit
 ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(eventsList.size) { index ->
             Card(
                 modifier = Modifier
                     .padding(12.dp)
-                    .clickable { onEventClick(index) }
+                    .clickable { onEventClick(eventsList[index].videoUrl) }
             ) {
                 BoxWithConstraints(
                     modifier = Modifier
