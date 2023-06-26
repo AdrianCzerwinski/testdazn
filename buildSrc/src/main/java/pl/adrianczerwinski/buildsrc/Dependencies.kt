@@ -20,6 +20,7 @@ object Versions {
     const val accompanist = "0.30.1"
     const val retrofit = "2.9.0"
     const val coil = "2.4.0"
+    const val exoplayer = "2.18.7"
 }
 
 object Dependencies {
@@ -27,6 +28,7 @@ object Dependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRuntimeKtx}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val exoplayer = "com.google.android.exoplayer:exoplayer:${Versions.exoplayer}"
 
     object Compose {
         const val material3 = "androidx.compose.material3:material3:${Versions.material3}"

@@ -67,7 +67,13 @@ private fun ScheduleScreen(
             CircularProgressIndicator(modifier = Modifier.size(60.dp))
         }
 
-        ERROR -> CommonError { onRetryPressed() }
+        ERROR -> Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            CommonError { onRetryPressed() }
+        }
     }
 }
 

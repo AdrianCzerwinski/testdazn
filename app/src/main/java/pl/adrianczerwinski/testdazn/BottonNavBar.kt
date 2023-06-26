@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -55,15 +57,23 @@ private fun RowScope.EventsBottomNavItem(currentRoute: String, onEventsClick: ()
     } else {
         MaterialTheme.colorScheme.tertiary
     }
-    Icon(
-        modifier = Modifier
-            .clickable { onEventsClick() }
-            .padding(12.dp)
-            .size(32.dp),
-        imageVector = Icons.Filled.Home,
-        contentDescription = "Events Icon",
-        tint = contentColor
-    )
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(
+            modifier = Modifier
+                .clickable { onEventsClick() }
+                .padding(12.dp)
+                .size(32.dp),
+            imageVector = Icons.Filled.Home,
+            contentDescription = "Events Icon",
+            tint = contentColor
+        )
+
+        if (currentRoute == Destinations.BottomNav.EVENTS) Divider(
+            modifier = Modifier.width(32.dp),
+            thickness = 3.dp,
+            color = contentColor
+        )
+    }
 }
 
 @Composable
@@ -77,13 +87,22 @@ private fun RowScope.ScheduleBottomNavItem(currentRoute: String, onScheduleClick
     } else {
         MaterialTheme.colorScheme.tertiary
     }
-    Icon(
-        modifier = Modifier
-            .clickable { onScheduleClick() }
-            .padding(12.dp)
-            .size(32.dp),
-        imageVector = Icons.Filled.DateRange,
-        contentDescription = "Schedule Icon",
-        tint = contentColor
-    )
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(
+            modifier = Modifier
+                .clickable { onScheduleClick() }
+                .padding(12.dp)
+                .size(32.dp),
+            imageVector = Icons.Filled.DateRange,
+            contentDescription = "Schedule Icon",
+            tint = contentColor
+        )
+
+        if (currentRoute == Destinations.BottomNav.SCHEDULE) Divider(
+            modifier = Modifier.width(32.dp),
+            thickness = 3.dp,
+            color = contentColor
+        )
+    }
 }
