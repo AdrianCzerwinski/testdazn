@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 data class EventsUiState(
-    val position: Long = 0L
+    val position: Long = 0L,
+    val isFullScreen: Boolean = false
 )
 @HiltViewModel
 class PlayerViewModel @Inject constructor() : ViewModel() {
