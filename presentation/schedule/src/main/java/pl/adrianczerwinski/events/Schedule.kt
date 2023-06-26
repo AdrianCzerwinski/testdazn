@@ -31,33 +31,33 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImagePainter.State.Success
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
-import pl.adrianczerwinski.events.EventsUiState.ScreenState.ERROR
-import pl.adrianczerwinski.events.EventsUiState.ScreenState.LOADING
-import pl.adrianczerwinski.events.EventsUiState.ScreenState.SUCCESS
+import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.ERROR
+import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.LOADING
+import pl.adrianczerwinski.events.ScheduledEventsUiState.ScreenState.SUCCESS
 import pl.adrianczerwinski.ui.components.CommonError
 import pl.adrianczerwinski.ui.components.GradientOverlay
 
 @Composable
-fun Events(
-    viewModel: EventsViewModel = hiltViewModel()
+fun Schedule(
+    viewModel: ScheduledEventsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
-    EventsScreen(uiState = uiState, onRetryPressed = { viewModel.getEvents() }) {
+    ScheduleScreen(uiState = uiState, onRetryPressed = { viewModel.getScheduledEvents() }) {
         // TODO add navigation do media player
     }
 }
 
 @Composable
-private fun EventsScreen(
-    uiState: EventsUiState,
+private fun ScheduleScreen(
+    uiState: ScheduledEventsUiState,
     onRetryPressed: () -> Unit = {},
     onEventClick: (Int) -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize()
 ) {
     when (uiState.screenState) {
-        SUCCESS -> EventsList(uiState.events) { onEventClick(it) }
+        SUCCESS -> EventsList(uiState.scheduledEvents) { onEventClick(it) }
 
         LOADING -> Column(
             modifier = Modifier.fillMaxSize(),
@@ -73,11 +73,11 @@ private fun EventsScreen(
 
 @Composable
 private fun EventsList(
-    eventsList: List<EventUiModel>,
+    scheduledEventsList: List<ScheduledEventUiModel>,
     onEventClick: (Int) -> Unit = {}
 ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(eventsList.size) { index ->
+        items(scheduledEventsList.size) { index ->
             Card(
                 modifier = Modifier
                     .padding(12.dp)
@@ -96,7 +96,7 @@ private fun EventsList(
                         modifier = Modifier
                             .fillMaxWidth()
                             .aspectRatio(ASPECT_RATIO),
-                        model = eventsList[index].imageUrl,
+                        model = scheduledEventsList[index].imageUrl,
                         contentDescription = null,
                         contentScale = ContentScale.Crop
                     ) {
@@ -115,7 +115,7 @@ private fun EventsList(
                             }
                         }
                     }
-                    ImageOverlay(isImageLoaded = isImageLoaded, maxHeight = maxHeight, event = eventsList[index])
+                    ImageOverlay(isImageLoaded = isImageLoaded, maxHeight = maxHeight, event = scheduledEventsList[index])
                 }
             }
         }
@@ -126,7 +126,7 @@ private fun EventsList(
 private fun BoxScope.ImageOverlay(
     isImageLoaded: Boolean,
     maxHeight: Dp,
-    event: EventUiModel
+    event: ScheduledEventUiModel
 ) {
     if (isImageLoaded) {
         GradientOverlay(maxHeight.value * 2)

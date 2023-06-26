@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.TileMode
 fun BoxScope.GradientOverlay(imageSize: Float) {
     val gradient = Brush.verticalGradient(
         colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.7f)),
-        startY = imageSize/2,
+        startY = imageSize / 2,
         endY = imageSize,
         tileMode = TileMode.Clamp
     )

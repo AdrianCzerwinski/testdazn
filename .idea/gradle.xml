@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/domain/events" />
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/presentation/events" />
+            <option value="$PROJECT_DIR$/presentation/schedule" />
           </set>
         </option>
       </GradleProjectSettings>

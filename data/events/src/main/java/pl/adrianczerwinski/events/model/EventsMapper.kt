@@ -1,15 +1,17 @@
 package pl.adrianczerwinski.events.model
 
-import pl.adrianczerwinski.common.convertDateToEpochAndToLocal
+import pl.adrianczerwinski.common.datetime.DateTimeConverter
 import pl.adrianczerwinski.events.network.model.EventResponse
 import pl.adrianczerwinski.events.network.model.ScheduledEventResponse
 import javax.inject.Inject
 
-class EventsMapper @Inject constructor() {
+class EventsMapper @Inject constructor(
+    private val dateTimeConverter: DateTimeConverter
+) {
     fun toEvent(eventResponse: EventResponse) = with(eventResponse) {
         Event(
             id = id,
-            date = convertDateToEpochAndToLocal(date),
+            date = dateTimeConverter.toEpochMilliseconds(date),
             title = title,
             imageUrl = imageUrl,
             videoUrl = videoUrl,
@@ -20,7 +22,7 @@ class EventsMapper @Inject constructor() {
     fun toScheduledEvent(scheduledEventResponse: ScheduledEventResponse) = with(scheduledEventResponse) {
         ScheduledEvent(
             id = id,
-            date = convertDateToEpochAndToLocal(date),
+            date = dateTimeConverter.toEpochMilliseconds(date),
             title = title,
             imageUrl = imageUrl,
             subtitle = subtitle

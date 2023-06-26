@@ -20,7 +20,8 @@ data class EventsUiState(
 }
 @HiltViewModel
 class EventsViewModel @Inject constructor(
-    private val getEventsUseCase: GetEventsUseCase
+    private val getEventsUseCase: GetEventsUseCase,
+    private val mapper: EventUiMapper
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(EventsUiState())
@@ -32,10 +33,11 @@ class EventsViewModel @Inject constructor(
     fun getEvents() = viewModelScope.launch {
         _state.value = _state.value.copy(screenState = LOADING)
         val events = getEventsUseCase.invoke()
+
         _state.value = if (events.isSuccess) {
             val newEvents = events
                 .getOrThrow()
-                .map { it.toUiModel() }
+                .map { mapper.toUiModel(it) }
                 .sortedBy { it.date }
             _state.value.copy(events = newEvents, screenState = SUCCESS)
         } else {

@@ -1,6 +1,5 @@
 package pl.adrianczerwinski.events.di
 
-import android.media.metrics.Event
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

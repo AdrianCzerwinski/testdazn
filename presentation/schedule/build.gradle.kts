@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "pl.adrianczerwinski.testdazn.features.events"
+    namespace = "pl.adrianczerwinski.testdazn.presentation.schedule"
 
     composeOptions {
         kotlinCompilerExtensionVersion = AppData.kotlinCompilerExtensionVersion
